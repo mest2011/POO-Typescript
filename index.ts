@@ -20,4 +20,11 @@ let CarroNovo = new Carro(
   "2.0"
 );
 
+CarroNovo.imprimeDados();
 CarroNovo.seta(TIPO_DE_SETA.DIREITA);
+
+console.log("\n\n\nTroca de placa: \n");
+console.log("Placa atual: ", CarroNovo.placa);
+CarroNovo.trocarPlaca("AVQ-3086");
+console.log("Placa nova: ", CarroNovo.placa);
+

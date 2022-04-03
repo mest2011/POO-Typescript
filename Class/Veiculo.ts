@@ -1,12 +1,12 @@
 import { caracteristicasVeiculo, TIPO_DE_SETA } from "../Models/Models";
-import { piscarSeta } from "../Utils/Funcoes";
+import { piscarSeta, validaPlaca } from "../Utils/Funcoes";
 
 export abstract class Veiculo implements caracteristicasVeiculo {
   anoFabricacao: number;
   anoModelo: number;
   chassi: string;
   cor: string;
-  placa: string;
+  private _placa: string;
 
   constructor(
     anoFabricacao: number,
@@ -19,8 +19,10 @@ export abstract class Veiculo implements caracteristicasVeiculo {
     this.anoModelo = anoModelo;
     this.chassi = chassi;
     this.cor = cor;
-    this.placa = placa;
+    this._placa = placa;
+  }
 
+  imprimeDados() {
     console.log("Caracteristicas do Veiculo: ");
     console.log(`Ano/Modelo: ${this.anoModelo}`);
     console.log(`Ano/Fabricação: ${this.anoFabricacao}`);
@@ -44,5 +46,14 @@ export abstract class Veiculo implements caracteristicasVeiculo {
       default:
         break;
     }
+  }
+
+  get placa() {
+    return this._placa;
+  }
+
+  trocarPlaca(placa: string) {
+    if (!validaPlaca(placa)) throw new Error(`Placa "${placa}" inválida!`);
+    this._placa = placa;
   }
 }
