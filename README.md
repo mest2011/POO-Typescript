@@ -3,7 +3,7 @@ Training typescript and POO
 
 
 ## How to build and run
-*** tsc index.ts | node index.js ***
+``` tsc index.ts | node index.js ```
 
 
 ## Commit documentation patterns
